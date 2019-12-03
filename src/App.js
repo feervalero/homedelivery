@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Store_Header from './Store_Header';
+import StorePlp from './StorePlp';
+import StorePdp from './StorePdp'
+import AdminHeader from './AdminHeader';
+import AdminUsers from './AdminUsers';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/admin">
+          <AdminHeader />
+          <Route path="/admin/users" component={AdminUsers}/>
+        </Route>
+        <Route path="/store">
+          <Store_Header />
+          <Route path="/store/plp" component={StorePlp} />
+          <Route path="/store/pdp" component={StorePdp} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
