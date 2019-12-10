@@ -1,27 +1,36 @@
 import React from "react";
-import Store_Header from './Store_Header';
-import StorePlp from './StorePlp';
-import StorePdp from './StorePdp'
-import AdminHeader from './AdminHeader';
-import AdminUsers from './AdminUsers';
+import StoreHeader from "./StoreHeader";
+import StorePlp from "./StorePlp";
+import StorePdp from "./StorePdp";
+import AdminHeader from "./AdminHeader";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import Cities from "./AdminCities";
+import AdminStates from "./AdminStates";
+import CheckoutPage from "./store/CheckoutPage";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/admin">
-          <AdminHeader />
-          <Route path="/admin/users" component={AdminUsers}/>
-        </Route>
-        <Route path="/store">
-          <Store_Header />
-          <Route path="/store/plp" component={StorePlp} />
-          <Route path="/store/pdp" component={StorePdp} />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="container">
+      <Router>
+        <Switch>
+          <Route path="/admin">
+            <AdminHeader />
+            
+            <Route path="/admin/cities" component={Cities} />
+            <Route path="/admin/states" component={AdminStates} />
+          </Route>
+          <Route path="/store">
+            <StoreHeader />
+            <Route path="/store/plp" component={StorePlp} />
+            <Route path="/store/pdp/:id" component={StorePdp} />
+            <Route path="/store/checkout" component={CheckoutPage} />
+            
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
